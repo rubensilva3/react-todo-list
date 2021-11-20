@@ -1,0 +1,35 @@
+.header{
+  background-color:cadetblue;
+  padding: 15px;
+}
+
+.title{
+  color: white;
+}
+
+h1{
+  margin: 0;
+}
+
+.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+main{
+  height: 100%;
+}
+
+.wrapper{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+

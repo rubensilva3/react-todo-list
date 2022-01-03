@@ -1,31 +1,39 @@
 import './App.css';
 import React , {useState, useEffect} from 'react';
+import TrashIcon from './icons/TrashIcon.svg';
+import SearchBar from './components/SearchBar/SearchBar';
+import Header from './components/Header/Header';
+import ItemCounter from './components/ItemCounter/ItemCounter';
+
+const useHasItems = (list) => {
+  const [hasItems, setHasItems] = useState(false);
+
+  useEffect(()=> {
+    if(list.length > 0) {
+      setHasItems(true);
+    }else{
+      setHasItems(false);
+    }
+  }, [list])
+
+  return hasItems;
+}
+
 const App = () => {
   const [text , setText] = useState('');
   const [list , setList] = useState([]);
-  const [hasItens, setHasItens] = useState(false);
-  
-  useEffect(()=> {
-    if(list.length > 0) {
-      setHasItens(true);
-    }else{
-      setHasItens(false);
-    }
-  }, [list])
+  const hasItems = useHasItems(list);
  
   return (
     <div className="wrapper">
-      <header className="header">
-        <h1 className="title">
-          To do list
-        </h1>
-      </header>
+       <Header/>
       <main>
-        <div className="center">
-         <form>
-            <label for="add-task">Add task</label>
-            <input type="Text" id="add-task" name="add-task" value={text} onChange={(e)=> setText(e.target.value)}/>
-              <button onClick={(e) => { 
+        <div> 
+         <ItemCounter list={list}/>
+         <div className="form">
+            <SearchBar text={text} setText={setText}/>
+
+            <button className='button' onClick={(e) => { 
                 e.preventDefault();
                 if(text===''){ 
                   return;
@@ -33,20 +41,22 @@ const App = () => {
                 
                 const newItem = {
                   value:text,
-                  checked:false,
+                  checked:false
                 };
                 setList([...list,newItem]);
                 setText('');
               }}>
               Submit
-              </button>
-              <button onClick={(e) => {
+            </button>
+
+            <button className='button' onClick={(e) => {
                 e.preventDefault();
                 setList([]);          
-              }}>Clear all</button>
+              }}>Clear all
+            </button>
 
-               { hasItens && <>
-                  <button onClick={(e) => {
+            { hasItems && <>
+                  <button className='button' onClick={(e) => {
                     e.preventDefault();
                     setList(list.map((elem,i) =>{          
                               return {
@@ -54,9 +64,10 @@ const App = () => {
                                 checked: true
                               }    
                         })
-                    )}}>Check All</button>
+                    )}}>Check All
+                  </button>
 
-                  <button onClick={(e) => {
+                <button className='button' onClick={(e) => {
                     e.preventDefault();
                     setList(list.map((elem,i) =>{          
                               return {
@@ -66,12 +77,12 @@ const App = () => {
                         })
                     )}}>Uncheck All</button>    
                   </>     
-                }
-         </form> 
-
+            }
+         </div> 
+         
          <ul>
             {list.map((elem,index) =>
-              <li>
+              <li className="Tasks">
                 <input checked={elem.checked} 
                     onChange={()=>{
                       setList(list.map((elem,i) =>{
@@ -85,10 +96,12 @@ const App = () => {
                       }))
                     }}
                     type="checkbox" />
-                {elem.value}
-                <button onClick={(e) => {
+                    <div className="itemText">
+                        {elem.value}
+                    </div>
+                <button className="delete" onClick={(e) => {
                     setList(list.filter((elem,i) => i!==index))   
-                }}>X</button>
+                }}> <img src={TrashIcon}/> </button> 
               </li>
            )}
          </ul>

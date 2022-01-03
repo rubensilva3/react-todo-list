@@ -1,26 +1,10 @@
-.header{
-  background-color:cadetblue;
-  padding: 15px;
-}
-
-.title{
-  color: white;
-}
-
 h1{
   margin: 0;
 }
 
-.center{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 main{
   height: 100%;
+  padding: 15px;
 }
 
 .wrapper{
@@ -28,8 +12,46 @@ main{
   display: flex;
   flex-direction: column;
 }
+.Tasks{
+  display: flex;
+  list-style-type: none;
+  margin-bottom: 10px;
+  border-bottom:1px solid #c4c4c4;
+  width: 25%;
+  align-items: center;
+  overflow-wrap: anywhere;
+}
 
+.delete{
+  margin-left: 5px;
+  border: none;
+  padding: 0px;
+  height: 36px;
+  width: 36px;
+  background: none;
+}
 
+.delete:hover{
+  background-color: #b3cccc;
+  cursor: pointer;
+}
 
+.itemText{
+  width: 100%;
+  margin-left: 5px;
+color: white;
+}
 
+.form {
+  display: flex;
+  gap: 8px;
+}
+.button{
+  background-color: #61DBFB;
+  color: white;
+  border-radius: 2px;
+  border: none;
+  padding: 5px 10px;
+}
 
+ 

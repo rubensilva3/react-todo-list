@@ -32,14 +32,15 @@ main{
 }
 
 .delete:hover{
-  background-color: #b3cccc;
   cursor: pointer;
 }
 
 .itemText{
   width: 100%;
   margin-left: 5px;
-color: white;
+  color: white;
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .form {
@@ -47,11 +48,18 @@ color: white;
   gap: 8px;
 }
 .button{
-  background-color: #61DBFB;
+  background-color: #6699ff;
   color: white;
   border-radius: 2px;
   border: none;
   padding: 5px 10px;
+  cursor: pointer;
+  
+}
+
+.button:hover{
+    background-color:#99bbff;
+    transition: 0.5s;
 }
 
  

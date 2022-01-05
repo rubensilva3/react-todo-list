@@ -1,8 +1,11 @@
 .header{
-    background-color:cadetblue;
+    background-color:#6699ff;
     padding: 15px;
 }
 
 .title{
     color: white;
+    font-size:25px ;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+
 }

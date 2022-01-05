@@ -4,7 +4,7 @@ import "./ItemCounter.css"
 
 const ItemCounter = ({list}) =>{
     return(
-        <div>Checked {list.filter((elem)=>{return elem.checked  }).length} items </div>
+        <div className="taskCounter"> {list.filter((elem)=>{return elem.checked  }).length} Tasks completed  </div>
     )
 }
     
